@@ -14,7 +14,7 @@ function getLoggedData(urlSubstring) {
     var allKeys = Object.keys(window.$$KIBIBIT_LoggedResponses);
 
     var loggedResponseKey = allKeys.find(function(loggedResponseUrl) {
-        return loggedResponseUrl.contains(urlSubstring);
+        return loggedResponseUrl.indexOf(urlSubstring) > -1;
     });
 
     return window.$$KIBIBIT_LoggedResponses[loggedResponseKey];
