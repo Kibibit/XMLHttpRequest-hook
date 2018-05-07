@@ -34,12 +34,19 @@ function addHookToHttpRequests() {
 
     function onResponse(xhr) {
         window.$$KIBIBIT_LoggedResponses = window.$$KIBIBIT_LoggedResponses || {};
+        
+        var response;
+        try {
+            response = JSON.parse(xhr.response);
+        } catch(e) {
+            response = xhr.response;
+        }
 
         window.$$KIBIBIT_LoggedResponses[xhr.responseURL] = {
             url: xhr.responseURL,
             status: xhr.status,
             statusText: xhr.statusText,
-            response: xhr.response
+            response: response
 
         };
     }
