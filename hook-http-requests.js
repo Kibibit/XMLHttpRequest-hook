@@ -2,7 +2,7 @@ window.KIBIBITHttpRequestHook = {
     addHookToHttpRequests: addHookToHttpRequests,
     unwire: clearXmlRequestCallbacks,
     getLoggedData: getLoggedData,
-    getAllLoggedErrors: getAllLoggedErrors
+    getLoggedErrors: getLoggedErrors
 };
 
 function getLoggedErrors(urlSubstring) {
