@@ -1,4 +1,4 @@
-module.exports = {
+window.KIBIBITHttpRequestHook = {
     addHookToHttpRequests: addHookToHttpRequests,
     unwire: clearXmlRequestCallbacks,
     getLoggedData: getLoggedData
