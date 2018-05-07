@@ -1,8 +1,28 @@
 window.KIBIBITHttpRequestHook = {
     addHookToHttpRequests: addHookToHttpRequests,
     unwire: clearXmlRequestCallbacks,
-    getLoggedData: getLoggedData
+    getLoggedData: getLoggedData,
+    getAllLoggedErrors: getAllLoggedErrors
 };
+
+function getLoggedErrors(urlSubstring) {
+    window.$$KIBIBIT_LoggedResponses = window.$$KIBIBIT_LoggedResponses || {};
+    
+    var allKeys = Object.keys(window.$$KIBIBIT_LoggedResponses);
+    
+    urlSubstring = urlSubstring || '';
+    
+    var allErrors = {};
+    allKeys.forEach(function(url) {
+        var data = window.$$KIBIBIT_LoggedResponses[url];
+        
+        if (url.indexOf(urlSubstring) > -1 && data.status !== 200) {
+            allErrors[url] = data;
+        }
+    });
+    
+    return allErrors;
+}
 
 function getLoggedData(urlSubstring) {
     window.$$KIBIBIT_LoggedResponses = window.$$KIBIBIT_LoggedResponses || {};
