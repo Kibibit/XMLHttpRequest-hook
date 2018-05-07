@@ -1,5 +1,5 @@
 # XMLHttpRequest-hook
-add the ability to hook callbacks to XMLHttpRequests
+add the ability to hook callbacks to XMLHttpRequests, and logs all requests automatically for easy retrieval later.
 
 you can inject this into your `Protractor` code by creating the following class:
 ```
