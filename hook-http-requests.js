@@ -6,6 +6,10 @@ window.KIBIBITHttpRequestHook = {
 
 function getLoggedData(urlSubstring) {
     window.$$KIBIBIT_LoggedResponses = window.$$KIBIBIT_LoggedResponses || {};
+    
+    if (!urlSubstring) {
+        return window.$$KIBIBIT_LoggedResponses;
+    }
 
     var allKeys = Object.keys(window.$$KIBIBIT_LoggedResponses);
 
