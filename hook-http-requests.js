@@ -21,7 +21,7 @@ function getLoggedErrors(urlSubstring) {
         }
     });
     
-    return allErrors;
+    return urlSubstring ? allErrors[Object.keys(allErrors)[0]] : allErrors;
 }
 
 function getLoggedData(urlSubstring) {
