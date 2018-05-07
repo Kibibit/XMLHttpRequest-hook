@@ -51,6 +51,11 @@ function clearXmlRequestCallbacks() {
     if (window.$$KIBIBITrealXHRSend) {
         XMLHttpRequest.prototype.send = window.$$KIBIBITrealXHRSend;
     }
+    
+    // clear collected data
+    if (window.$$KIBIBIT_LoggedResponses) {
+        window.$$KIBIBIT_LoggedResponses = {};
+    }
 }
 
 function addHookToHttpRequests() {
