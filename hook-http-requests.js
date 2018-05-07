@@ -41,9 +41,15 @@ function getLoggedData(urlSubstring) {
 }
 
 function clearXmlRequestCallbacks() {
+    // clear the callbacks
     if (Array.isArray(XMLHttpRequest.$$KIBIBIT_requestCallbacks)) {
         XMLHttpRequest.$$KIBIBIT_requestCallbacks = [];
         XMLHttpRequest.$$KIBIBIT_responseCallbacks = [];
+    }
+    
+    // return to the old send function
+    if (window.$$KIBIBITrealXHRSend) {
+        XMLHttpRequest.prototype.send = window.$$KIBIBITrealXHRSend;
     }
 }
 
@@ -93,6 +99,7 @@ function addHookToHttpRequests() {
             XMLHttpRequest.$$KIBIBIT_responseCallbacks = [];
             // store the native send()
             RealXHRSend = XMLHttpRequest.prototype.send;
+            window.$$KIBIBITrealXHRSend = RealXHRSend;
             // override the native send()
             XMLHttpRequest.prototype.send = function () {
                 // Fire request callbacks before sending the request
